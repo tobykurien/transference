@@ -6,7 +6,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class GravityAction extends Action {
    Actor actor;
    
-   int minY = 50;
+   int minY = 72;
    
    public GravityAction(Actor actor) {
       this.actor = actor;
