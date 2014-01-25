@@ -35,7 +35,7 @@ public class Bob extends Actor {
       walkBack = new Animation(0.05f, regions2[0]);
       bounds = new Rectangle(0, 0, 16, 16);
       jumpAction = new JumpAction(this);
-      gravityAction = new GravityAction(this);
+      gravityAction = new GravityAction(this, new Obstacles());
    }
 
    @Override
@@ -79,6 +79,10 @@ public class Bob extends Actor {
       if (Gdx.input.isKeyPressed(Keys.W) && !jumpAction.isJumping()) {
          stateTime = 0;
          jumpAction.jump(forward);
+      }
+      
+      if (Gdx.input.isKeyPressed(Keys.ALT_RIGHT)) {
+         Gdx.app.debug("bob", "Position: " + getX() + "," + getY());
       }
    }
 }
