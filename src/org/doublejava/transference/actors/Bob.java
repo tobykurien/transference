@@ -55,6 +55,7 @@ public class Bob extends Actor {
          state = STATE_WALKING;
          forward = true;
          stateTime += deltaTime;
+         translate(1, 0);
       } else if (Gdx.input.isKeyPressed(Keys.A)) {
          state = STATE_WALKING;
          forward = false;
