@@ -15,7 +15,7 @@ public class GravityAction extends Action {
    @Override
    public boolean act(float deltaTime) {
       if (actor.getY() > minY) {
-         actor.translate(0, -5);
+         actor.translate(0, -10);
          return true;
       } else if (actor.getY() < minY) {
          actor.translate(0, minY - actor.getY());

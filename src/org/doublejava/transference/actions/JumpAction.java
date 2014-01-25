@@ -9,12 +9,12 @@ public class JumpAction extends Action {
    boolean jumping = false;
    boolean forward = true;
 
-   int jumpTime = 0;
+   float jumpTime = 0;
    float[] jumpX = new float[]{
       1, 1, 1, 1, 1, 1, 1, 1, 1, 1
    };
    float[] jumpY = new float[]{
-      1, 1, 1, 1, 1, -1, -1, -1, -1, -1
+      1, 1, 0.8f, 0.5f, 0.2f, -0.2f, -0.5f, -0.8f, -1, -1
    };
    
    public JumpAction(Actor actor) {
@@ -24,9 +24,10 @@ public class JumpAction extends Action {
    @Override
    public boolean act(float delta) {
       if (!jumping) return false;
+      
       int dir = (forward ? 1 : -1);
-      actor.translate(jumpX[jumpTime] * 5 * dir, jumpY[jumpTime] * 15);
-      jumpTime += 1;
+      actor.translate(jumpX[(int)jumpTime] * 3 * dir, jumpY[(int)jumpTime] * 10);
+      jumpTime += delta * 20;
       if (jumpTime >= jumpX.length) {
          jumping = false;
       }

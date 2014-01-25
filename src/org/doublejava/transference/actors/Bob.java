@@ -72,8 +72,9 @@ public class Bob extends Actor {
          stateTime = 0;
       } 
 
-      jumpAction.act(deltaTime);
-      if (!jumpAction.isJumping()) gravityAction.act(deltaTime);
+      if (!jumpAction.act(deltaTime)) {
+         gravityAction.act(deltaTime);
+      }
 
       if (Gdx.input.isKeyPressed(Keys.W) && !jumpAction.isJumping()) {
          stateTime = 0;
