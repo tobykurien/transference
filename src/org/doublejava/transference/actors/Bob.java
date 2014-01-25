@@ -1,5 +1,6 @@
 package org.doublejava.transference.actors;
 
+import org.doublejava.transference.actions.GravityAction;
 import org.doublejava.transference.actions.JumpAction;
 
 import com.badlogic.gdx.Gdx;
@@ -23,6 +24,7 @@ public class Bob extends Actor {
    int state = STATE_STOPPED;
    Rectangle bounds;
    JumpAction jumpAction;
+   GravityAction gravityAction;
    
    public Bob() {
       texture = new Texture(Gdx.files.internal("data/bob_walk.png"));
@@ -33,6 +35,7 @@ public class Bob extends Actor {
       walkBack = new Animation(0.05f, regions2[0]);
       bounds = new Rectangle(0, 0, 16, 16);
       jumpAction = new JumpAction(this);
+      gravityAction = new GravityAction(this);
    }
 
    @Override
@@ -70,6 +73,7 @@ public class Bob extends Actor {
       } 
 
       jumpAction.act(deltaTime);
+      if (!jumpAction.isJumping()) gravityAction.act(deltaTime);
 
       if (Gdx.input.isKeyPressed(Keys.W) && !jumpAction.isJumping()) {
          stateTime = 0;
