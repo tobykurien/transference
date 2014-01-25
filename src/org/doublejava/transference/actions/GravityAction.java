@@ -17,7 +17,7 @@ public class GravityAction extends Action {
    
    @Override
    public boolean act(float deltaTime) {
-      minY = (int) obstacles.getMinY(actor.getX());
+      minY = (int) obstacles.getMinY(actor.getX() + (actor.getWidth()/2));
       if (actor.getY() > minY) {
          actor.translate(0, -10);
          return true;
