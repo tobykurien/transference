@@ -33,7 +33,7 @@ public class Transference extends Game {
 
    @Override
    public void resize(int width, int height) {
-      level1.setViewport(width, height, true);
+      level1.setViewport(480, 320, true);
       level1.getCamera().translate(-level1.getGutterWidth(), -level1.getGutterHeight(), 0);
    }
 

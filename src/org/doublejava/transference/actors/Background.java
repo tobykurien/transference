@@ -14,6 +14,6 @@ public class Background extends Actor {
    
    @Override
    public void draw(SpriteBatch batch, float parentAlpha) {
-      batch.draw(texture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+      batch.draw(texture, 0, 0);
    }
 }
