@@ -19,7 +19,6 @@ public class GravityAction extends Action {
          return true;
       } else if (actor.getY() < minY) {
          actor.translate(0, minY - actor.getY());
-         
       }
       return false;
    }
