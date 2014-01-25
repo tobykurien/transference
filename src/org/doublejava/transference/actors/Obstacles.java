@@ -23,7 +23,9 @@ public class Obstacles extends Actor {
       obstacles.add(new Rectangle(462,0,18,18*8));
    }
    
-   public float getMinY(float x) {
+   public float getMinY(Actor actor) {
+      Rectangle actorBounds = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
+      float x = actor.getX() - (actor.getWidth()/2f);
       for (Rectangle r : obstacles) {
          if (r.contains(x, 0)) {
             return r.height;
@@ -33,6 +35,28 @@ public class Obstacles extends Actor {
       return 72f;
    }
    
+   public float getMaxX(Actor actor) {
+      Rectangle actorBounds = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
+      for (Rectangle r : obstacles) {
+         if (r.overlaps(actorBounds)) {
+            return r.getX();
+         }
+      }
+      
+      return actor.getX();
+   }
+
+   public float getMinX(Actor actor) {
+      Rectangle actorBounds = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
+      for (Rectangle r : obstacles) {
+         if (r.overlaps(actorBounds)) {
+            return r.getX() + r.getWidth();
+         }
+      }
+      
+      return actor.getX();
+   }
+
    @Override
    public void draw(SpriteBatch batch, float parentAlpha) {
       ShapeRenderer renderer = new ShapeRenderer();

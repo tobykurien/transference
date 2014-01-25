@@ -12,7 +12,7 @@ public class Level1 extends Stage {
       addActor(new Background("data/level1.png"));
       
       Bob bob = new Bob();
-      bob.translate(0, 300);
+      bob.translate(200, 300);
       addActor(bob);
    }
    
