@@ -2,7 +2,6 @@ package org.doublejava.transference.stages;
 
 import org.doublejava.transference.actors.Background;
 import org.doublejava.transference.actors.Bob;
-import org.doublejava.transference.actors.Obstacles;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 

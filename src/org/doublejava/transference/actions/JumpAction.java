@@ -26,7 +26,7 @@ public class JumpAction extends Action {
       if (!jumping) return false;
       
       int dir = (forward ? 1 : -1);
-      actor.translate(jumpX[(int)jumpTime] * 3 * dir, jumpY[(int)jumpTime] * 8);
+      actor.translate(jumpX[(int)jumpTime] * 3 * dir, jumpY[(int)jumpTime] * 5);
       jumpTime += delta * 20;
       if (jumpTime >= jumpX.length) {
          jumping = false;

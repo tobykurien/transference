@@ -24,7 +24,6 @@ public class Obstacles extends Actor {
    }
    
    public float getMinY(Actor actor) {
-      Rectangle actorBounds = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
       float x = actor.getX() - (actor.getWidth()/2f);
       for (Rectangle r : obstacles) {
          if (r.contains(x, 0)) {
@@ -39,6 +38,8 @@ public class Obstacles extends Actor {
       Rectangle actorBounds = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
       for (Rectangle r : obstacles) {
          if (r.overlaps(actorBounds)) {
+//         	Gdx.app.debug("actorbounds", "GETMAXX  Position: " + actorBounds.getX() + "," + actorBounds.getY());
+//         	Gdx.app.debug("r.overlaps bounds", "GETMAXX  Position: " + r.getX() + "," + r.getY());
             return r.getX();
          }
       }
@@ -49,8 +50,10 @@ public class Obstacles extends Actor {
    public float getMinX(Actor actor) {
       Rectangle actorBounds = new Rectangle(actor.getX(), actor.getY(), actor.getWidth(), actor.getHeight());
       for (Rectangle r : obstacles) {
-         if (r.overlaps(actorBounds)) {
-            return r.getX() + r.getWidth();
+         if ((r.getX() < actorBounds.getX() && r.overlaps(actorBounds)) || ((r.getX() + r.getWidth()) <= actorBounds.getX() && r.overlaps(actorBounds))) {
+//         	Gdx.app.debug("actorbounds", "GETMINX  Position: " + actorBounds.getX() + "," + actorBounds.getY());
+//         	Gdx.app.debug("r.overlaps bounds", "GETMINX  Position: " + r.getX() + "," + r.getY());
+            return r.getX() + r.getWidth()/2;
          }
       }
       
