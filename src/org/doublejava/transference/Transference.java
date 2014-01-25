@@ -1,43 +1,44 @@
 package org.doublejava.transference;
 
-import com.badlogic.gdx.ApplicationListener;
+import org.doublejava.transference.stages.Level1;
 
-public class Transference implements ApplicationListener {
+import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.GL10;
 
+public class Transference extends Game {
+   private Level1 level1;
+   
    @Override
    public void create() {
-      // TODO Auto-generated method stub
-      
+      level1 = new Level1();
+      Gdx.input.setInputProcessor(level1);
    }
 
    @Override
    public void dispose() {
-      // TODO Auto-generated method stub
-      
+      level1.dispose();
    }
 
    @Override
    public void pause() {
-      // TODO Auto-generated method stub
-      
    }
 
    @Override
    public void render() {
-      // TODO Auto-generated method stub
-      
+      Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+      level1.act(Gdx.graphics.getDeltaTime());
+      level1.draw();
    }
 
    @Override
-   public void resize(int arg0, int arg1) {
-      // TODO Auto-generated method stub
-      
+   public void resize(int width, int height) {
+      level1.setViewport(width, height, true);
+      level1.getCamera().translate(-level1.getGutterWidth(), -level1.getGutterHeight(), 0);
    }
 
    @Override
    public void resume() {
-      // TODO Auto-generated method stub
-      
    }
 
 }
