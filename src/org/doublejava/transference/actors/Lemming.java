@@ -12,21 +12,18 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Bob extends Actor {
-	final int STATE_STOPPED = 0;
-	final int STATE_WALKING = 1;
-
+public class Lemming extends Actor {
 	Texture texture;
 	Animation walk;
 	Animation walkBack;
 	float stateTime = 0;
 	boolean forward = true;
-	int state = STATE_STOPPED;
+	boolean isSelected = false;
 	JumpAction jumpAction;
 	GravityAction gravityAction;
 
-	public Bob() {
-		texture = new Texture(Gdx.files.internal("data/bob_walk.png"));
+	public Lemming() {
+		texture = new Texture(Gdx.files.internal("data/platform_walk.png"));
 		TextureRegion[][] regions = new TextureRegion(texture,
 				texture.getWidth(), texture.getHeight()).split(16, 16);
 		walk = new Animation(0.05f, regions[0]);
@@ -35,6 +32,7 @@ public class Bob extends Actor {
 		for (TextureRegion tr : regions2[0])
 			tr.flip(true, false);
 		walkBack = new Animation(0.05f, regions2[0]);
+
 		jumpAction = new JumpAction(this);
 		gravityAction = new GravityAction(this);
 
@@ -52,38 +50,27 @@ public class Bob extends Actor {
 	@Override
 	public void act(float deltaTime) {
 		float startX = getX();
-		if (Gdx.input.isKeyPressed(Keys.D)) {
-			state = STATE_WALKING;
-			forward = true;
-			stateTime += deltaTime;
-			if (getX() < (getStage().getWidth() - getWidth() / 2)) {
-				translate(1, 0);
-			}
-		} else if (Gdx.input.isKeyPressed(Keys.A)) {
-			state = STATE_WALKING;
-			forward = false;
-			stateTime += deltaTime;
-			if (getX() > 0) {
-				translate(-1, 0);
-			}
-		} else if (Gdx.input.isKeyPressed(Keys.ALT_RIGHT)) {
-			Gdx.app.debug("bob", "Position: " + getX() + "," + getY());
-		} else {
-			state = STATE_STOPPED;
-			stateTime = 0;
-		}
 
+      if (forward) {
+         stateTime += deltaTime;
+         if (getX() < (getStage().getWidth() - getWidth() / 2)) {
+            translate(1, 0);
+         }
+      } else {
+         forward = false;
+         stateTime += deltaTime;
+         if (getX() > 0) {
+            translate(-1, 0);
+         }
+      }		
+		
 		if (!jumpAction.act(deltaTime)) {
 			gravityAction.act(deltaTime);
 		}
 
-		if (Gdx.input.isKeyPressed(Keys.W) && !jumpAction.isJumping()) {
+		if (isSelected && Gdx.input.isKeyPressed(Keys.W) && !jumpAction.isJumping()) {
 			stateTime = 0;
 			jumpAction.jump(forward);
-		}
-
-		if (Gdx.input.isKeyPressed(Keys.ALT_RIGHT)) {
-			Gdx.app.debug("bob", "Position: " + getX() + "," + getY() + ", " + getWidth() + "," + getHeight());
 		}
 
       ObstaclesLevel1 obstacles = ((Level1)getStage()).obstacles;
@@ -91,12 +78,14 @@ public class Bob extends Actor {
 		   // moving to the right
 		   float maxX = obstacles.getMaxX(this);
 			if (getX() > maxX) {
+			   forward = false;
 				setX(maxX);
 			}
 		} else {
 		   // moving to the left
          float minX = obstacles.getMinX(this);
 			if (getX() < minX) {
+            forward = true;
 				setX(minX);
 			}
 		}

@@ -10,10 +10,10 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 
-public class Obstacles extends Actor {
+public class ObstaclesLevel1 extends Actor {
    List<Rectangle> obstacles = new ArrayList<Rectangle>();
    
-   public Obstacles() {
+   public ObstaclesLevel1() {
       // Level 1 fixed obstacles
       obstacles.add(new Rectangle(0,0,90,162));
       obstacles.add(new Rectangle(264,0,18,90));

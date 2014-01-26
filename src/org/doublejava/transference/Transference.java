@@ -1,5 +1,6 @@
 package org.doublejava.transference;
 
+import org.doublejava.transference.actors.ObstaclesLevel1;
 import org.doublejava.transference.stages.Level1;
 
 import com.badlogic.gdx.Game;
