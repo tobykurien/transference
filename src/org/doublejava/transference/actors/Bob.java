@@ -38,7 +38,7 @@ public class Bob extends Actor {
 		jumpAction = new JumpAction(this);
 		gravityAction = new GravityAction(this);
 
-		setWidth(16);
+		setWidth(10);
 		setHeight(16);
 	}
 
