@@ -15,18 +15,16 @@ import com.badlogic.gdx.utils.Array;
 public class ObstaclesLevel1 extends Actor {
    List<Rectangle> obstacles = new ArrayList<Rectangle>();
    List<Rectangle> actorRects = new ArrayList<Rectangle>();
-   private ShapeRenderer renderer;
+   private ShapeRenderer renderer = new ShapeRenderer();
    
    public ObstaclesLevel1() {
-      renderer = new ShapeRenderer();
-
       // Level 1 fixed obstacles
-      obstacles.add(new Rectangle(0,0,90,162));
-      obstacles.add(new Rectangle(264,0,18,90));
-      obstacles.add(new Rectangle(354,0,18,162));
-      obstacles.add(new Rectangle(372,0,18*4,18*8));
-      obstacles.add(new Rectangle(444,0,18,18*9));
-      obstacles.add(new Rectangle(462,0,18,18*8));
+      obstacles.add(new Rectangle(0,0,94,162));
+      obstacles.add(new Rectangle(274,0,18,90));
+      obstacles.add(new Rectangle(364,0,18,162));
+      obstacles.add(new Rectangle(382,0,18*4,18*8));
+      obstacles.add(new Rectangle(454,0,18,18*9));
+      obstacles.add(new Rectangle(472,0,18,18*8));
    }
    
    public void updateActors(Array<Actor> actors) {
@@ -61,7 +59,7 @@ public class ObstaclesLevel1 extends Actor {
          if (r.getX() + r.getWidth() > actor.getX() && r.overlaps(actorBounds)) {
 //         	Gdx.app.debug("actorbounds", "GETMAXX  Position: " + actorBounds.getX() + "," + actorBounds.getY());
 //         	Gdx.app.debug("r.overlaps bounds", "GETMAXX  Position: " + r.getX() + "," + r.getY());
-            return r.getX() - 2;
+            return r.getX() - actor.getWidth();
          }
       }
       

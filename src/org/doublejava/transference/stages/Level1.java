@@ -19,7 +19,7 @@ public class Level1 extends Stage {
       Lemming lem = new Lemming();
       lem.translate(250,162);
       addActor(lem);
-      //addActor(obstacles);
+      addActor(obstacles);
    }
 
    @Override
