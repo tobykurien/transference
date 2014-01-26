@@ -64,10 +64,9 @@ public class Lemming extends Actor {
          }
       }		
 		
-		if (!jumpAction.act(deltaTime)) {
-			gravityAction.act(deltaTime);
-		}
-
+	   jumpAction.act(deltaTime);
+		gravityAction.act(deltaTime);
+		   
 		if (isSelected && Gdx.input.isKeyPressed(Keys.W) && !jumpAction.isJumping()) {
 			stateTime = 0;
 			jumpAction.jump(forward);
