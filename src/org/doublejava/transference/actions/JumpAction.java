@@ -28,7 +28,7 @@ public class JumpAction extends Action {
       int dir = (forward ? 1 : -1);
       float deltaX = jumpX[(int)jumpTime] * 3 * dir;
       float deltaY = jumpY[(int)jumpTime] * 7;
-      actor.translate(0, deltaY);
+      actor.translate(0, deltaY + GravityAction.GRAVITY); // overcome gravity
       jumpTime += delta * 20;
       if (jumpTime >= jumpX.length) {
          jumping = false;

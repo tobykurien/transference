@@ -36,7 +36,7 @@ public class Lemming extends Actor {
 		jumpAction = new JumpAction(this);
 		gravityAction = new GravityAction(this);
 
-		setWidth(16);
+		setWidth(12);
 		setHeight(16);
 	}
 

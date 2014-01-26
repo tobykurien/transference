@@ -38,7 +38,7 @@ public class Bob extends Actor {
 		jumpAction = new JumpAction(this);
 		gravityAction = new GravityAction(this);
 
-		setWidth(10);
+		setWidth(12);
 		setHeight(16);
 	}
 
@@ -73,9 +73,8 @@ public class Bob extends Actor {
 			stateTime = 0;
 		}
 
-		if (!jumpAction.act(deltaTime)) {
-			gravityAction.act(deltaTime);
-		}
+	   jumpAction.act(deltaTime);
+	   gravityAction.act(deltaTime);
 
 		if (Gdx.input.isKeyPressed(Keys.W) && !jumpAction.isJumping()) {
 			stateTime = 0;
