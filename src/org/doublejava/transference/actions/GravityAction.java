@@ -1,6 +1,6 @@
 package org.doublejava.transference.actions;
 
-import org.doublejava.transference.actors.ObstaclesLevel1;
+import org.doublejava.transference.actors.Obstacles;
 import org.doublejava.transference.stages.Level1;
 
 import com.badlogic.gdx.scenes.scene2d.Action;
@@ -17,7 +17,7 @@ public class GravityAction extends Action {
    
    @Override
    public boolean act(float deltaTime) {
-      ObstaclesLevel1 obstacles = ((Level1)actor.getStage()).obstacles;
+      Obstacles obstacles = ((Level1)actor.getStage()).obstacles;
       minY = (int) obstacles.getMinY(actor);
       if (actor.getY() > minY) {
          actor.translate(0, -GRAVITY);

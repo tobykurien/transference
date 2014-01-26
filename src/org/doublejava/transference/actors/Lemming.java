@@ -72,7 +72,7 @@ public class Lemming extends Actor {
 			jumpAction.jump(forward);
 		}
 
-      ObstaclesLevel1 obstacles = ((Level1)getStage()).obstacles;
+      Obstacles obstacles = ((Level1)getStage()).obstacles;
       if (startX < getX()) {
          // moving to the right
          float maxX = obstacles.getMaxX(this);

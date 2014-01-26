@@ -15,6 +15,8 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 public class Bob extends Actor {
 	final int STATE_STOPPED = 0;
 	final int STATE_WALKING = 1;
+	
+	final float WALK_SPEED = 2.5f;
 
 	Texture texture;
 	Animation walk;
@@ -57,17 +59,15 @@ public class Bob extends Actor {
 			forward = true;
 			stateTime += deltaTime;
 			if (getX() < (getStage().getWidth() - getWidth() / 2)) {
-				translate(1, 0);
+				translate(WALK_SPEED, 0);
 			}
 		} else if (Gdx.input.isKeyPressed(Keys.A)) {
 			state = STATE_WALKING;
 			forward = false;
 			stateTime += deltaTime;
 			if (getX() > 0) {
-				translate(-1, 0);
+				translate(-WALK_SPEED, 0);
 			}
-		} else if (Gdx.input.isKeyPressed(Keys.ALT_RIGHT)) {
-			Gdx.app.debug("bob", "Position: " + getX() + "," + getY());
 		} else {
 			state = STATE_STOPPED;
 			stateTime = 0;
@@ -85,7 +85,7 @@ public class Bob extends Actor {
 			Gdx.app.debug("bob", "Position: " + getX() + "," + getY() + ", " + getWidth() + "," + getHeight());
 		}
 
-      ObstaclesLevel1 obstacles = ((Level1)getStage()).obstacles;
+      Obstacles obstacles = ((Level1)getStage()).obstacles;
 		if (startX < getX()) {
 		   // moving to the right
 		   float maxX = obstacles.getMaxX(this);

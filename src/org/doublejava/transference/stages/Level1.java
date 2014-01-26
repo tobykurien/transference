@@ -3,12 +3,13 @@ package org.doublejava.transference.stages;
 import org.doublejava.transference.actors.Background;
 import org.doublejava.transference.actors.Bob;
 import org.doublejava.transference.actors.Lemming;
+import org.doublejava.transference.actors.Obstacles;
 import org.doublejava.transference.actors.ObstaclesLevel1;
 
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 public class Level1 extends Stage {
-   public ObstaclesLevel1 obstacles;
+   public Obstacles obstacles;
    
    public Level1() {
       obstacles = new ObstaclesLevel1();
@@ -19,7 +20,7 @@ public class Level1 extends Stage {
       Lemming lem = new Lemming();
       lem.translate(250,162);
       addActor(lem);
-      addActor(obstacles);
+      //addActor(obstacles);
    }
 
    @Override
