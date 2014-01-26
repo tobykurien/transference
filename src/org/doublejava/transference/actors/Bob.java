@@ -91,13 +91,13 @@ public class Bob extends Actor {
 		   // moving to the right
 		   float maxX = obstacles.getMaxX(this);
 			if (getX() > maxX) {
-				setX(maxX);
+				translate(maxX - getX(), 0);
 			}
 		} else {
 		   // moving to the left
          float minX = obstacles.getMinX(this);
 			if (getX() < minX) {
-				setX(minX);
+            translate(minX - getX(), 0);
 			}
 		}
 	}

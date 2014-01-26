@@ -12,6 +12,7 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class ObstaclesLevel1 extends Actor {
    List<Rectangle> obstacles = new ArrayList<Rectangle>();
+   List<Rectangle> actors = new ArrayList<Rectangle>();
    
    public ObstaclesLevel1() {
       // Level 1 fixed obstacles
@@ -21,6 +22,13 @@ public class ObstaclesLevel1 extends Actor {
       obstacles.add(new Rectangle(372,0,18*4,18*8));
       obstacles.add(new Rectangle(444,0,18,18*9));
       obstacles.add(new Rectangle(462,0,18,18*8));
+   }
+   
+   public void updateActors(List<Actor> actors) {
+      actors.clear();
+      for (Actor a : actors) {
+         //actors.add(new Rectangle(a.getX(), a.getY(), a.getWidth(), a.getHeight()));
+      }
    }
    
    public float getMinY(Actor actor) {
