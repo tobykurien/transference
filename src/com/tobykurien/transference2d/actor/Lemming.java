@@ -25,22 +25,30 @@ public class Lemming extends Actor {
 
 	public Lemming(Platform platform) {
 		texture = new Texture(Gdx.files.internal("data/platform_walk.png"));
+		
+		// grab frames for walking forward and create Animation
 		TextureRegion[][] regions = new TextureRegion(texture,
 				texture.getWidth(), texture.getHeight()).split(16, 16);
 		walk = new Animation(0.05f, regions[0]);
+		
+		// flip frames for walking backwards and create Animation
 		TextureRegion[][] regions2 = new TextureRegion(texture,
 				texture.getWidth(), texture.getHeight()).split(16, 16);
 		for (TextureRegion tr : regions2[0])
 			tr.flip(true, false);
 		walkBack = new Animation(0.05f, regions2[0]);
 
+		// set our bounds within the frame
 		setWidth(12);
 		setHeight(16);
 		
 		addToPlatform(platform);
 	}
 
-
+	/**
+	 * Create a Box2d model and add to the Box2d world inside Platform object
+	 * @param platform
+	 */
    private void addToPlatform(Platform platform) {
       // 1. Create a BodyDef, as usual.
       BodyDef bd = new BodyDef();
@@ -107,9 +115,9 @@ public class Lemming extends Actor {
 	@Override
 	public void act(float deltaTime) {
       Vector2 curVel = body.getLinearVelocity();
-      float startX = getX();
 
       if (curVel.x == 0) {
+         // we've stopped moving, assume collision and turn around
          turn();
       }
       

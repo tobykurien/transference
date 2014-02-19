@@ -16,6 +16,10 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.tobykurien.transference2d.BodyEditorLoader;
 
+/**
+ * Actual Level platform image with Box2d collision model (fixture)
+ * @author toby
+ */
 public class Background extends Actor {
    Body body;
    

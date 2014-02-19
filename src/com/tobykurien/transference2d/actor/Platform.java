@@ -26,31 +26,33 @@ public class Platform extends Actor {
       world.setContactListener(new ContactListener() {
          @Override
          public void preSolve(Contact arg0, Manifold arg1) {
-            // TODO Auto-generated method stub
-            
          }
          
          @Override
          public void postSolve(Contact arg0, ContactImpulse arg1) {
-            // TODO Auto-generated method stub
-            
          }
          
          @Override
          public void endContact(Contact arg0) {
-            // TODO Auto-generated method stub
-            
          }
          
          @Override
          public void beginContact(Contact contact) {
             if (collisionBetween(contact, Lemming.class, Bob.class)) {
                // Bob and Lemming collided either horizontally or vertically
+               // if Bob is standing on Lemming, Bob needs to follow Lemming
             }
          }
       });
    }
    
+   /**
+    * Returns true if the collision was between instances of the specified classes
+    * @param contact
+    * @param class1
+    * @param class2
+    * @return
+    */
    protected boolean collisionBetween(Contact contact, Class class1, Class class2) {
       if (class1.isInstance(contact.getFixtureA().getBody().getUserData()) &&
                class2.isInstance(contact.getFixtureB().getBody().getUserData()) ) {

@@ -13,6 +13,7 @@ public class Level1 extends Stage {
       platform = new Platform();
       addActor(platform);
       addActor(new Background(platform, "data/level1.png"));
+      
       Bob bob = new Bob(platform);
       bob.setPosition(0, 300);
       addActor(bob);
